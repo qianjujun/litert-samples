@@ -44,8 +44,31 @@ LiteRT Android SDK.
 Notes:
 
 *   NPU runtime libs are commented out in
-    [AndroidApp/app/build.gradle.kts](AndroidApp/app/build.gradle.kts#L51).
-    Uncomment one of them to enable TPU/NPU support.
+    [AndroidApp/app/build.gradle.kts](AndroidApp/app/build.gradle.kts#L54)
+    and are not included from
+    [AndroidApp/settings.gradle.kts](AndroidApp/settings.gradle.kts).
+    Uncomment one of them, and the matching `include` lines, to enable TPU/NPU
+    support. A fresh checkout builds the CPU/GPU APK without those modules.
+
+Build a debug APK (Android SDK, NDK, and CMake 3.22.1 required):
+
+```sh
+cd AndroidApp
+./gradlew :app:assembleDebug
+```
+
+The installable APK is `app/build/outputs/apk/debug/app-debug.apk`. The first
+build downloads `jlibrosa`. Models and tokenizers are not inside the APK; the
+app downloads the selected model from Hugging Face on first use.
+
+Prebuilt arm64-v8a sideload packages are in [`dist/`](dist/):
+
+*   `asr-debug.apk` — debug build.
+*   `asr-release.apk` — release build, signed with the Android debug
+    certificate so `adb install -r dist/asr-release.apk` works. It is not a
+    Play upload key.
+
+Both packages target `minSdk` 31 and `arm64-v8a` only.
 
 ### 2. convert
 

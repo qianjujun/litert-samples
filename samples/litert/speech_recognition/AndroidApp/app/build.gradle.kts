@@ -94,7 +94,8 @@ dependencies {
   implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
   implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
   implementation(files("libs/jlibrosa-1.1.8-SNAPSHOT-jar-with-dependencies.jar"))
-  implementation(project(":litert_npu_runtime_libraries:runtime_strings"))
+  // NPU feature-module titles. Uncomment together with the modules in settings.gradle.kts.
+  // implementation(project(":litert_npu_runtime_libraries:runtime_strings"))
   testImplementation(libs.junit)
   testImplementation("org.json:json:20231013")
   androidTestImplementation(libs.androidx.junit)

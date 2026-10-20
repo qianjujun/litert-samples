@@ -54,6 +54,8 @@ site/
 *.apk
 *.ap_
 *.aab
+# Prebuilt speech-recognition sideload APKs (see samples/litert/speech_recognition/dist).
+!samples/litert/speech_recognition/dist/*.apk
 
 # Files for the ART/Dalvik VM
 *.dex
